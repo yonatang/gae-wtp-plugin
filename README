@@ -1,0 +1,11 @@
+WTP adapter for google app engine
+Very early alpha version.
+
+GAE icon from - http://www.iconspedia.com/icon/google-appengine--741.html (under CC license)
+
+TODO - 
+* server shutdown script as well
+* Assert that only one module per server is enforces (GAE restriction)
+* Verify WAR version competibility (2.4? 2.5?)
+
+

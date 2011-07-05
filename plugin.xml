@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.wst.server.core.runtimeTypes">
+        <runtimeType
+			class="org.eclipse.jst.server.generic.core.internal.GenericServerRuntime"
+			description="Google App Engine 1.5x Runtime"
+			id="org.eclipsewtp.server.gae.runtime"
+			name="Google App Engine 1.5x Runtime"
+			vendor="Google"
+			vendorId="google"
+			version="1.5">
+			<moduleType types="jst.web" versions="2.2,2.3,2.4"/>
+		</runtimeType>
+   </extension>
+   
+   <extension
+         point="org.eclipse.wst.server.core.serverTypes">
+         <serverType
+			id="org.eclipsewtp.server.gae.server"
+			runtime="true"
+			runtimeTypeId="org.eclipsewtp.server.gae.runtime"
+			name="Google App Engine 1.5x"
+			description="Google App Engine 1.5x"
+			class="org.eclipse.jst.server.generic.core.internal.GenericServer"
+			behaviourClass="org.eclipse.jst.server.generic.core.internal.GenericServerBehaviour"
+			hasConfiguration="false"
+			initialState="stopped"
+			launchConfigId="org.eclipse.jst.server.generic.core.launchConfigurationType"
+			launchModes="run,debug"
+			startBeforePublish="false"
+			startTimeout="120000"
+			stopTimeout="15000"
+			supportsRemoteHosts="false"/>
+   </extension>
+   
+   <extension
+         point="org.eclipse.wst.common.project.facet.core.runtimes">
+      <runtime-component-type
+            id="org.eclipsewtsp.server.gae" />
+      <runtime-component-version
+            type="org.eclipsewtp.server.gae"
+            version="1.5" /> 
+      <adapter>
+         <runtime-component
+               id="org.eclipsewtp.server.gae" />
+         <factory
+               class="org.eclipse.jst.server.core.internal.RuntimeClasspathProvider$Factory" />
+         <type
+               class="org.eclipse.jst.common.project.facet.core.IClasspathProvider"/>
+      </adapter>
+      <adapter>
+		<runtime-component id="org.eclipsewtp.server.gae"/>
+		<factory
+			class="org.eclipse.jst.server.ui.internal.RuntimeLabelProvider$Factory"/>
+		<type
+			class="org.eclipse.wst.common.project.facet.ui.IRuntimeComponentLabelProvider"/>
+	  </adapter>
+	  
+	  <supported>
+		<runtime-component
+			id="org.eclipsewtp.server.gae"
+			version="1.5"/>
+      	<facet
+        	id="jst.web"
+         	version="2.2,2.3,2.4"/>
+    	</supported>
+   </extension>
+   
+   <extension
+         point="org.eclipse.jst.server.core.runtimeFacetMappings">
+         <runtimeFacetMapping
+			runtimeTypeId="org.eclipsewtp.server.gae.runtime"
+			runtime-component="org.eclipsewtp.server.gae"
+			version="1.5"/>
+   </extension>
+   
+   <extension
+         point="org.eclipse.wst.server.ui.wizardFragments">
+         <fragment
+			id="org.eclipse.jst.server.generic.runtime"
+			typeIds="org.eclipsewtp.server.gae.runtime"
+			class="org.eclipse.jst.server.generic.ui.internal.GenericServerRuntimeWizardFragment"/>
+		<fragment
+			id="org.eclipse.jst.server.generic.server"
+			typeIds="org.eclipsewtp.server.gae.server"
+			class="org.eclipse.jst.server.generic.ui.internal.GenericServerWizardFragment"/>
+   </extension>
+   
+   <extension
+		point="org.eclipse.wst.server.ui.serverImages">
+		<image 
+			id="org.eclipse.jst.server.generic.image"
+			icon="icons/gae-16.png"
+			typeIds="org.eclipsewtp.server.gae.runtime"/>
+		<image
+			id="org.eclipse.jst.server.generic.image"
+			icon="icons/gae-16.png"
+			typeIds="org.eclipsewtp.server.gae.server"/>
+	</extension>
+	
+	<extension
+		point="org.eclipse.wst.common.project.facet.ui.images">
+		<image
+			runtime-component-type="org.eclipsewtp.server.gae"
+			path="icons/gae-16.png"/>
+	</extension>
+	
+	<extension
+		point="org.eclipse.jst.server.generic.core.serverdefinition">
+		<serverdefinition
+			id="org.eclipsewtp.server.gae.runtime"
+			definitionfile="servers/gae15.serverdef"/>
+	</extension>
+</plugin>
