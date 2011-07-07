@@ -1,11 +1,21 @@
-WTP adapter for google app engine
-Very early alpha version.
+WTP adapter for Google App Engine.
+https://github.com/yonatang/gae-wtp-plugin
+ 
+Created by Yonatan Graber, Licensed under GPLv3 (see license.txt)
 
-GAE icon from - http://www.iconspedia.com/icon/google-appengine--741.html (under CC license)
+Allows publishing, starting and stopping GAE from eclipse's server view. Show be easier to create maven GAE applications.
+Please note that currently, although GAE doesn't support multiple contexts in the same server (multiple modules), it is possible to publish several modules. Doing so will cause unexpected results of the server.
+
+
+Notice that this is a very early version.
 
 TODO - 
 * server shutdown script as well
-* Assert that only one module per server is enforces (GAE restriction)
-* Verify WAR version competibility (2.4? 2.5?)
+* Enforce only one module per server (GAE restriction)
+* Verify WAR version competibility (servlet 2.5, apparently)
+* Maven build
+* Move UI strings into properites file
+* More customization for server/runtime
 
 
+GAE icon created by Tempset http://tempest.deviantart.com/ under CC license

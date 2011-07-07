@@ -5,6 +5,7 @@
 	<property name="pause.undeploy" value="3" />
 
 	<target name="deploy.j2ee.web">
+		<mkdir dir="${server.publish.dir}"/>
 		<copy todir="${server.publish.dir}">
 			<fileset dir="${module.dir}" includes="**/*.*" excludes="**/*.war" />
 		</copy>
