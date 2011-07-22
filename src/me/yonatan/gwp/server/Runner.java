@@ -13,6 +13,19 @@ public class Runner {
 
 	static final int ADMIN_PORT = 9999;
 
+	class ShutdownHook extends Thread {
+		private final Future<Void> future;
+
+		ShutdownHook(Future<Void> future) {
+			this.future = future;
+		}
+
+		@Override
+		public void run() {
+			future.cancel(true);
+		}
+	}
+
 	// TODO jrebel support - both dir and args
 
 	private static final String entryClass = "com.google.appengine.tools.development.DevAppServerMain";
@@ -39,12 +52,7 @@ public class Runner {
 		final Thread t = new Thread();
 		log.info("Starting gae admin server on port " + ADMIN_PORT);
 		t.start();
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			@Override
-			public void run() {
-				future.cancel(true);
-			}
-		});
+		Runtime.getRuntime().addShutdownHook(new ShutdownHook(future));
 	}
 
 	private Runner() throws IOException {

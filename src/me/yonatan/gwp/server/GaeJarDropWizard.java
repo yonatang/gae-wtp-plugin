@@ -21,11 +21,13 @@ import org.eclipse.wst.server.core.TaskModel;
 @SuppressWarnings("restriction")
 public class GaeJarDropWizard extends GenericServerRuntimeWizardFragment {
 
+	public static final String jarName = "appengine-wrapper.jar";
 	private static Logger log = Logger.getLogger(GaeJarDropWizard.class
 			.getName());
 
 	@Override
 	public void performFinish(IProgressMonitor monitor) throws CoreException {
+		super.performFinish(monitor);
 		log.info("performFinsish");
 		TaskModel tm = getTaskModel();
 		Object o = tm.getObject(TaskModel.TASK_RUNTIME);
@@ -36,7 +38,8 @@ public class GaeJarDropWizard extends GenericServerRuntimeWizardFragment {
 				.get("serverRootDirectory").toString();
 
 		File file = new File(serverRootDirectory + File.separatorChar + "lib"
-				+ File.separatorChar + "hack.jar");
+				+ File.separatorChar + jarName);
+		file.mkdirs();
 		if (file.exists()) {
 			file.delete();
 		}
@@ -53,9 +56,10 @@ public class GaeJarDropWizard extends GenericServerRuntimeWizardFragment {
 	private void writeRuntimeJar(File outFile) throws Exception {
 		String pack = "me/yonatan/gwp/server/";
 		Class<?>[] classes = new Class[] { AdminServer.class, Runner.class,
-				Stopper.class };
+				Stopper.class, Runner.ShutdownHook.class };
 		String[] names = new String[] { pack + "AdminServer.class",
-				pack + "Runner.class", pack + "Stopper.class" };
+				pack + "Runner.class", pack + "Stopper.class",
+				pack + "Runner$ShutdownHook.class" };
 		OutputStream out = new FileOutputStream(outFile);
 		JarOutputStream jar = new JarOutputStream(out);
 		for (int i = 0; i < names.length; i++) {
