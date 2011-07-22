@@ -17,9 +17,16 @@ public class AdminServer implements Callable<Void> {
 	private int adminPort;
 	private Process gaeServerProcess;
 
+	private Thread gaeServerThread;
+
 	public AdminServer(int adminPort, Process gaeServerProcess) {
 		this.adminPort = adminPort;
 		this.gaeServerProcess = gaeServerProcess;
+	}
+
+	public AdminServer(int adminPort, Thread gaeServerThread) {
+		this.adminPort = adminPort;
+		this.gaeServerThread = gaeServerThread;
 	}
 
 	@Override
@@ -43,7 +50,12 @@ public class AdminServer implements Callable<Void> {
 			if (Stopper.STOP.equalsIgnoreCase(line)) {
 				System.out.println("STOP it!");
 				out.println(DONE);
-				gaeServerProcess.destroy();
+				if (gaeServerProcess != null)
+					gaeServerProcess.destroy();
+				if (gaeServerThread != null) {
+					gaeServerThread.interrupt();
+				}
+
 			} else {
 				out.println(UNKNOWN);
 			}

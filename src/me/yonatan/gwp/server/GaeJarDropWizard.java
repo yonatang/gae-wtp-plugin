@@ -18,6 +18,7 @@ import org.eclipse.jst.server.generic.ui.internal.GenericServerRuntimeWizardFrag
 import org.eclipse.wst.server.core.IRuntime;
 import org.eclipse.wst.server.core.TaskModel;
 
+@SuppressWarnings("restriction")
 public class GaeJarDropWizard extends GenericServerRuntimeWizardFragment {
 
 	private static Logger log = Logger.getLogger(GaeJarDropWizard.class
