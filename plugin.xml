@@ -78,14 +78,19 @@
    
    <extension
          point="org.eclipse.wst.server.ui.wizardFragments">
-         <fragment
+       <!-- <fragment
 			id="org.eclipse.jst.server.generic.runtime"
 			typeIds="org.eclipsewtp.server.gae.runtime"
-			class="org.eclipse.jst.server.generic.ui.internal.GenericServerRuntimeWizardFragment"/>
+			class="org.eclipse.jst.server.generic.ui.internal.GenericServerRuntimeWizardFragment"/> -->
+			<fragment
+			id="org.eclipse.jst.server.generic.runtime"
+			typeIds="org.eclipsewtp.server.gae.runtime"
+			class="me.yonatan.gwp.server.GaeJarDropWizard"/>
 		<fragment
 			id="org.eclipse.jst.server.generic.server"
 			typeIds="org.eclipsewtp.server.gae.server"
-			class="org.eclipse.jst.server.generic.ui.internal.GenericServerWizardFragment"/>
+			class="org.eclipse.jst.server.generic.ui.internal.GenericServerWizardFragment"/> 
+		
    </extension>
    
    <extension

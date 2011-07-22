@@ -4,8 +4,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://eclipse.org/jst/server/generic/ServerTypeDefinition ServerTypeDefinitionSchema.xsd "
 	name="Google App Engine 1.5" version="v1.5">
-	<property id="serverRootDirectory" label="directory" type="directory" context="runtime"
-		default="/gaeDir" />
+	<property id="serverRootDirectory" label="directory" type="directory"
+		context="runtime" default="/gaeDir" />
 	<property id="port" label="Server Port" type="string" context="server"
 		default="8888" />
 	<port>
@@ -16,21 +16,29 @@
 	<module>
 		<type>jst.web</type>
 		<publishDir>${serverRootDirectory}/deploy</publishDir>
-		<publisherReference>org.eclipse.jst.server.generic.antpublisher</publisherReference>
+		<publisherReference>org.eclipse.jst.server.generic.antpublisher
+		</publisherReference>
 	</module>
 	<project>
 		<classpathReference>gae</classpathReference>
 	</project>
 	<start>
-		<mainClass>com.google.appengine.tools.development.DevAppServerMain</mainClass>
-		<programArguments>--port=${port} ${serverRootDirectory}/deploy</programArguments>
+		<!-- <mainClass>com.google.appengine.tools.development.DevAppServerMain</mainClass> -->
+		<mainClass>me.yonatan.gwp.server.Runner</mainClass>
+		<programArguments>--port=${port} --sdk_root=${serverRootDirectory}
+			${serverRootDirectory}/deploy
+		</programArguments>
 		<workingDirectory>${serverRootDirectory}/deploy</workingDirectory>
-		<vmParameters>-Ddatastore.default_high_rep_job_policy_unapplied_job_pct=50 -Xmx512m -javaagent:${serverRootDirectory}/lib/agent/appengine-agent.jar</vmParameters>
+		<!-- <vmParameters>-Ddatastore.default_high_rep_job_policy_unapplied_job_pct=50 -->
+		<!-- -Xmx512m -->
+		<!-- -javaagent:${serverRootDirectory}/lib/agent/appengine-agent.jar</vmParameters> -->
 		<classpathReference>gae</classpathReference>
 	</start>
+
 	<stop>
-		<!-- TODO -->
-		<external>"do nothing"</external>
+		<mainClass>me.yonatan.gwp.server.Stopper</mainClass>
+		<programArguments></programArguments>
+		<classpathReference>gae</classpathReference>
 		<workingDirectory>${serverRootDirectory}/bin</workingDirectory>
 	</stop>
 

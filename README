@@ -6,16 +6,14 @@ Created by Yonatan Graber, Licensed under GPLv3 (see license.txt)
 Allows publishing, starting and stopping GAE from eclipse's server view. Show be easier to create maven GAE applications.
 Please note that currently, although GAE doesn't support multiple contexts in the same server (multiple modules), it is possible to publish several modules. Doing so will cause unexpected results of the server.
 
-
 Notice that this is a very early version.
 
 TODO - 
-* server shutdown script as well
 * Enforce only one module per server (GAE restriction)
-* Verify WAR version competibility (servlet 2.5, apparently)
-* Maven build
+* Maven build (or not, seems very complicated)
 * Move UI strings into properites file
 * More customization for server/runtime
 
 
-GAE icon created by Tempset http://tempest.deviantart.com/ under CC license
+GAE icon by Tempset http://tempest.deviantart.com/ under CC license
+Server runner code taken from Google http://code.google.com/p/googleappengine/ under Apache License 2.0 
