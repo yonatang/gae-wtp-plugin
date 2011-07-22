@@ -4,16 +4,17 @@ https://github.com/yonatang/gae-wtp-plugin
 Created by Yonatan Graber, Licensed under GPLv3 (see license.txt)
 
 Allows publishing, starting and stopping GAE from eclipse's server view. Show be easier to create maven GAE applications.
-Please note that currently, although GAE doesn't support multiple contexts in the same server (multiple modules), it is possible to publish several modules. Doing so will cause unexpected results of the server.
+Please note that currently, although GAE doesn't support multiple contexts in the same server (multiple modules), nothing enforces it. Publishing multiple modules to the same server will cause unexpected results.
 
 Notice that this is a very early version.
 
 TODO - 
 * Enforce only one module per server (GAE restriction)
 * Maven build (or not, seems very complicated)
-* Move UI strings into properites file
+* Move UI strings into properties file
 * More customization for server/runtime
 
 
 GAE icon by Tempset http://tempest.deviantart.com/ under CC license
-Server runner code taken from Google http://code.google.com/p/googleappengine/ under Apache License 2.0 
+Server runner code taken from Google http://code.google.com/p/googleappengine/ under Apache License 2.0
+Apache's commons-io taken from The Apache Software Foundation http://commons.apache.org/io/ under Apache License 2.0
