@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Gae-wtp-plugin
-Bundle-SymbolicName: gae-wtp-plugin;singleton:=true
+Bundle-Name: Google Appengine WTP Adaptor plugin
+Bundle-SymbolicName: me.yonatan.gwp.wtp.plugin;singleton:=true
 Bundle-Version: 0.1.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.wst.server.core;bundle-version="1.1.302",
@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.wst.server.core;bundle-version="1.1.302",
  org.eclipse.jst.common.project.facet.core;bundle-version="1.4.200"
 Export-Package: me.yonatan.gwp.server
 Bundle-ClassPath: .,
- commons-io-2.0.1.jar
+ lib/
 Import-Package: org.eclipse.core.resources,
  org.eclipse.jdt.core
+Bundle-Vendor: Yonatan Graber
