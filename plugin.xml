@@ -6,7 +6,7 @@
         <runtimeType
 			class="org.eclipse.jst.server.generic.core.internal.GenericServerRuntime"
 			description="Google App Engine 1.5x Runtime"
-			id="org.eclipsewtp.server.gae.runtime"
+			id="org.eclipse.wtp.server.gae.runtime"
 			name="Google App Engine 1.5x Runtime"
 			vendor="Google"
 			vendorId="google"
@@ -18,9 +18,9 @@
    <extension
          point="org.eclipse.wst.server.core.serverTypes">
          <serverType
-			id="org.eclipsewtp.server.gae.server"
+			id="org.eclipse.wtp.server.gae.server"
 			runtime="true"
-			runtimeTypeId="org.eclipsewtp.server.gae.runtime"
+			runtimeTypeId="org.eclipse.wtp.server.gae.runtime"
 			name="Google App Engine 1.5x"
 			description="Google App Engine 1.5x"
 			class="org.eclipse.jst.server.generic.core.internal.GenericServer"
@@ -38,20 +38,20 @@
    <extension
          point="org.eclipse.wst.common.project.facet.core.runtimes">
       <runtime-component-type
-            id="org.eclipsewtsp.server.gae" />
+            id="org.eclipse.wtp.server.gae" />
       <runtime-component-version
-            type="org.eclipsewtp.server.gae"
+            type="org.eclipse.wtp.server.gae"
             version="1.5" /> 
       <adapter>
          <runtime-component
-               id="org.eclipsewtp.server.gae" />
+               id="org.eclipse.wtp.server.gae" />
          <factory
                class="org.eclipse.jst.server.core.internal.RuntimeClasspathProvider$Factory" />
          <type
                class="org.eclipse.jst.common.project.facet.core.IClasspathProvider"/>
       </adapter>
       <adapter>
-		<runtime-component id="org.eclipsewtp.server.gae"/>
+		<runtime-component id="org.eclipse.wtp.server.gae"/>
 		<factory
 			class="org.eclipse.jst.server.ui.internal.RuntimeLabelProvider$Factory"/>
 		<type
@@ -60,7 +60,7 @@
 	  
 	  <supported>
 		<runtime-component
-			id="org.eclipsewtp.server.gae"
+			id="org.eclipse.wtp.server.gae"
 			version="1.5"/>
       	<facet
         	id="jst.web"
@@ -71,8 +71,8 @@
    <extension
          point="org.eclipse.jst.server.core.runtimeFacetMappings">
          <runtimeFacetMapping
-			runtimeTypeId="org.eclipsewtp.server.gae.runtime"
-			runtime-component="org.eclipsewtp.server.gae"
+			runtimeTypeId="org.eclipse.wtp.server.gae.runtime"
+			runtime-component="org.eclipse.wtp.server.gae"
 			version="1.5"/>
    </extension>
    
@@ -80,15 +80,15 @@
          point="org.eclipse.wst.server.ui.wizardFragments">
        <!-- <fragment
 			id="org.eclipse.jst.server.generic.runtime"
-			typeIds="org.eclipsewtp.server.gae.runtime"
+			typeIds="org.eclipse.wtp.server.gae.runtime"
 			class="org.eclipse.jst.server.generic.ui.internal.GenericServerRuntimeWizardFragment"/> -->
 			<fragment
 			id="org.eclipse.jst.server.generic.runtime"
-			typeIds="org.eclipsewtp.server.gae.runtime"
+			typeIds="org.eclipse.wtp.server.gae.runtime"
 			class="me.yonatan.gwp.server.GaeJarDropWizard"/>
 		<fragment
 			id="org.eclipse.jst.server.generic.server"
-			typeIds="org.eclipsewtp.server.gae.server"
+			typeIds="org.eclipse.wtp.server.gae.server"
 			class="org.eclipse.jst.server.generic.ui.internal.GenericServerWizardFragment"/> 
 		
    </extension>
@@ -98,24 +98,24 @@
 		<image 
 			id="org.eclipse.jst.server.generic.image"
 			icon="icons/gae-16.png"
-			typeIds="org.eclipsewtp.server.gae.runtime"/>
+			typeIds="org.eclipse.wtp.server.gae.runtime"/>
 		<image
 			id="org.eclipse.jst.server.generic.image"
 			icon="icons/gae-16.png"
-			typeIds="org.eclipsewtp.server.gae.server"/>
+			typeIds="org.eclipse.wtp.server.gae.server"/>
 	</extension>
 	
 	<extension
 		point="org.eclipse.wst.common.project.facet.ui.images">
 		<image
-			runtime-component-type="org.eclipsewtp.server.gae"
+			runtime-component-type="org.eclipse.wtp.server.gae"
 			path="icons/gae-16.png"/>
 	</extension>
 	
 	<extension
 		point="org.eclipse.jst.server.generic.core.serverdefinition">
 		<serverdefinition
-			id="org.eclipsewtp.server.gae.runtime"
+			id="org.eclipse.wtp.server.gae.runtime"
 			definitionfile="servers/gae15.serverdef"/>
 	</extension>
 </plugin>

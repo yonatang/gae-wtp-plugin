@@ -28,13 +28,13 @@ public class GaeJarDropWizard extends GenericServerRuntimeWizardFragment {
 
 	public static final String sourceJarName = "appengine-tools-api.jar";
 
-	private static Logger log = Logger.getLogger(GaeJarDropWizard.class
+	private static final Logger log = Logger.getLogger(GaeJarDropWizard.class
 			.getName());
 
 	@Override
 	public void performFinish(IProgressMonitor monitor) throws CoreException {
 		super.performFinish(monitor);
-		log.fine("performFinsish");
+		log.info("performFinsish");
 		TaskModel tm = getTaskModel();
 		Object o = tm.getObject(TaskModel.TASK_RUNTIME);
 		IRuntime runtime = (IRuntime) o;
@@ -54,7 +54,7 @@ public class GaeJarDropWizard extends GenericServerRuntimeWizardFragment {
 		File targetFile = new File(targetFilename);
 
 		try {
-			FileUtils.forceDelete(targetFile);
+			FileUtils.deleteQuietly(targetFile);
 			writeRuntimeJar(sourceFile, targetFile);
 
 			if (!new File(backupFilename).exists()) {
@@ -85,10 +85,12 @@ public class GaeJarDropWizard extends GenericServerRuntimeWizardFragment {
 			try {
 				sourceJar.close();
 			} catch (Exception e) {
+				log.severe("Can't close source file " + e.getMessage());
 			}
 			try {
 				targetJar.close();
 			} catch (Exception e) {
+				log.severe("Can't close target file " + e.getMessage());
 			}
 
 		}
@@ -125,8 +127,6 @@ public class GaeJarDropWizard extends GenericServerRuntimeWizardFragment {
 			targetJar.putNextEntry(targetEntry);
 			IOUtils.copy(sourceJar.getInputStream(entry), targetJar);
 			targetJar.closeEntry();
-
 		}
-
 	}
 }

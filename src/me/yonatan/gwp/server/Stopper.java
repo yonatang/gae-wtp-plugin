@@ -5,28 +5,31 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.logging.Logger;
 
 public class Stopper {
 	public static final String STOP = "stop";
 
+	private static final Logger log = Logger.getLogger(Stopper.class.getName());
+
 	public static void main(String[] args) throws IOException {
-		System.out.println("STOPPER");
+		log.info("Stopping server");
 		Socket socket = new Socket("localhost", Runner.ADMIN_PORT);
 		PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 		BufferedReader in = new BufferedReader(new InputStreamReader(
 				socket.getInputStream()));
 
 		String inputLine = in.readLine();
-		System.out.println("Got " + inputLine);
 		if (!AdminServer.HELLO.equalsIgnoreCase(inputLine)) {
-			System.out.println("Bad server");
+			log.severe("Got bad response from server - " + inputLine);
 			return;
 		}
-		System.out.println("Writing stop");
-		out.println("stop");
+		log.info("Sending stop command");
+		out.println(STOP);
 		if (!AdminServer.DONE.equalsIgnoreCase(inputLine)) {
-			System.out.println("Bad server");
+			log.severe("Got bad response from server - " + inputLine);
 			return;
 		}
+		log.info("Sever recieved stop command succesfully");
 	}
 }

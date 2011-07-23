@@ -8,12 +8,15 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Callable;
+import java.util.logging.Logger;
 
 public class AdminServer implements Callable<Void> {
 	public static final String DONE = "done";
 	public static final String UNKNOWN = "unkown";
 	public static final String HELLO = "hello?";
 
+	private static final Logger log=Logger.getLogger(AdminServer.class.getName());
+	
 	private int adminPort;
 	private Process gaeServerProcess;
 
@@ -35,21 +38,20 @@ public class AdminServer implements Callable<Void> {
 			//TODO more robust server, that doesn't hangs after one connection
 			ServerSocket ss = new ServerSocket(adminPort);
 
-			System.out.println("Listening");
+			log.info("Starting Admin server");
 			Socket client = ss.accept();
-			System.out.println("Accepted");
+			log.info("Admin server got request");
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					client.getInputStream()));
 			PrintWriter out = new PrintWriter(new OutputStreamWriter(
 					client.getOutputStream()), true);
-
 			String line;
 			out.println(HELLO);
-			System.out.println("Waiting for command");
 			line = in.readLine();
+			log.info("Got "+line+" command");
 			System.out.println("got " + line);
 			if (Stopper.STOP.equalsIgnoreCase(line)) {
-				System.out.println("STOP it!");
+				log.info("Stopping GAE server");
 				out.println(DONE);
 				if (gaeServerProcess != null)
 					gaeServerProcess.destroy();
@@ -61,6 +63,7 @@ public class AdminServer implements Callable<Void> {
 				out.println(UNKNOWN);
 			}
 		} catch (IOException e) {
+			log.severe("Problem in the admin server - "+e.getMessage());
 			e.printStackTrace();
 		}
 		return null;
