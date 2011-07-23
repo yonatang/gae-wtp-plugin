@@ -106,7 +106,6 @@ public class GaeJarDropWizard extends GenericServerRuntimeWizardFragment {
 				pack + "Runner$ShutdownHook.class" };
 		for (int i = 0; i < names.length; i++) {
 			InputStream in = classes[i].getResourceAsStream("/" + names[i]);
-			System.out.println(names[i] + "  -  " + in + "\n\n");
 			targetJar.putNextEntry(new ZipEntry(names[i]));
 			IOUtils.copy(in, targetJar);
 			targetJar.closeEntry();

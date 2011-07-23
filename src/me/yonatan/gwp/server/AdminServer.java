@@ -49,7 +49,6 @@ public class AdminServer implements Callable<Void> {
 			out.println(HELLO);
 			line = in.readLine();
 			log.info("Got "+line+" command");
-			System.out.println("got " + line);
 			if (Stopper.STOP.equalsIgnoreCase(line)) {
 				log.info("Stopping GAE server");
 				out.println(DONE);
