@@ -34,7 +34,7 @@ public class GaeJarDropWizard extends GenericServerRuntimeWizardFragment {
 	@Override
 	public void performFinish(IProgressMonitor monitor) throws CoreException {
 		super.performFinish(monitor);
-		log.info("performFinsish");
+		log.fine("performFinsish");
 		TaskModel tm = getTaskModel();
 		Object o = tm.getObject(TaskModel.TASK_RUNTIME);
 		IRuntime runtime = (IRuntime) o;

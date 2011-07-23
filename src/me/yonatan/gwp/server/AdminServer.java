@@ -32,6 +32,7 @@ public class AdminServer implements Callable<Void> {
 	@Override
 	public Void call() throws Exception {
 		try {
+			//TODO more robust server, that doesn't hangs after one connection
 			ServerSocket ss = new ServerSocket(adminPort);
 
 			System.out.println("Listening");

@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.wst.server.core;bundle-version="1.1.302",
  org.eclipse.jst.common.project.facet.core;bundle-version="1.4.200"
 Export-Package: me.yonatan.gwp.server
 Bundle-ClassPath: .,
- lib/
+ lib/commons-io-2.0.1.jar
 Import-Package: org.eclipse.core.resources,
  org.eclipse.jdt.core
 Bundle-Vendor: Yonatan Graber
