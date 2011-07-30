@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.wst.server.core;bundle-version="1.1.302",
  org.eclipse.jst.server.generic.core;bundle-version="1.0.700",
  org.eclipse.jst.server.generic.ui;bundle-version="1.0.505",
  org.eclipse.jst.server.ui;bundle-version="1.1.202",
- org.eclipse.jst.common.project.facet.core;bundle-version="1.4.200"
+ org.eclipse.jst.common.project.facet.core;bundle-version="1.4.200",
+ org.eclipse.ui.forms;bundle-version="3.5.100"
 Export-Package: me.yonatan.gwp.server
 Bundle-ClassPath: .,
  lib/commons-io-2.0.1.jar
