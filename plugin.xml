@@ -93,6 +93,7 @@
 		
    </extension>
    
+   
    <extension
 		point="org.eclipse.wst.server.ui.serverImages">
 		<image 
@@ -103,6 +104,17 @@
 			id="org.eclipse.jst.server.generic.image"
 			icon="icons/gae-16.png"
 			typeIds="org.eclipse.wtp.server.gae.server"/>
+	</extension>
+	
+	<!-- Add properties and sections to the Server UI -->
+	<extension 
+		point="org.eclipse.wst.server.ui.editorPageSections">
+		 <section
+            class="me.yonatan.gwp.ui.editor.WorkingDirectorySection"
+            id="me.yonatan.gwp.ui.editor.workingDirectorySection"
+            insertionId="org.eclipse.wst.server.editor.overview.left"
+            order="9"
+            typeIds="org.eclipse.wtp.server.gae.server"/>
 	</extension>
 	
 	<extension
