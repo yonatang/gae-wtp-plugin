@@ -21,14 +21,13 @@
 	<project>
 		<classpathReference>gae</classpathReference>
 	</project>
+
 	<start>
-		<!-- <mainClass>com.google.appengine.tools.development.DevAppServerMain</mainClass> -->
 		<mainClass>me.yonatan.gwp.server.Runner</mainClass>
 		<programArguments>--port=${port} --sdk_root=${serverRootDirectory} ${serverRootDirectory}/deploy</programArguments>
 		<workingDirectory>${serverRootDirectory}/deploy</workingDirectory>
 		<vmParameters>-cp ${serverRootDirectory}/lib/appengine-wrapper.jar -Ddatastore.default_high_rep_job_policy_unapplied_job_pct=50 -Xmx512m -javaagent:${serverRootDirectory}/lib/agent/appengine-agent.jar</vmParameters>
 		<classpathReference>gae</classpathReference>
-		
 	</start>
 
 	<stop>
@@ -55,8 +54,11 @@
 
 	<classpath id="gae">
 		<archive path="${serverRootDirectory}/lib/appengine-tools-api.jar" />
+		<!-- Not in archive in order to avoid braking the validation -->
+		<fileset dir="${serverRootDirectory}">
+			<include name="lib/appengine-admin-server.jar" />
+		</fileset>
 	</classpath>
-
 
 	<!-- TODO - necessery? -->
 	<jndiConnection>
